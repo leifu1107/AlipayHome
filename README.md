@@ -164,5 +164,3 @@ app:layout_behavior="@string/appbar_scrolling_view_behavior"
         //上滑时遮罩由全透明到半透明
         v_title_big_mask.setBackgroundColor(argb);
     }
-    ```
-
