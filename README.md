@@ -169,4 +169,4 @@ app:layout_behavior="@string/appbar_scrolling_view_behavior"
 
 扫描二维码 或者 点击二维码 下载
 
-[![AlipayHome](https://github.com/leifu1107/AlipayHome/raw/master/screenshots/1.gif)](https://github.com/leifu1107/AlipayHome/raw/master/screenshots/app-release.apk)
+[![AlipayHome](https://github.com/leifu1107/AlipayHome/raw/master/screenshots/zrcode.png)](https://github.com/leifu1107/AlipayHome/raw/master/screenshots/app-release.apk)
