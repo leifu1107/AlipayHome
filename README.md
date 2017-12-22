@@ -126,4 +126,43 @@ Toolbar里面放两个布局(一个搜索的布局,一个扫一扫 付一付 聊
 ```java
 app:layout_behavior="@string/appbar_scrolling_view_behavior"
 ```
-	
+* ## `最重要一点` 因为支付有个淡入淡出的渐变动画<br>	
+这个渐变动画其实可分为两段：<br>
+1、导航栏从展开状态向上收缩时，头部的各控件要慢慢向背景色过渡，也就是淡入效果；<br>
+2、导航栏向上收缩到一半，顶部的工具栏要换成收缩状态下的工具栏布局，并且随着导航栏继续向上收缩，新工具栏上的各控件也要慢慢变得清晰起来，也就是淡出效果。<br>
+我们可以采取类似遮罩的做法，即一开始先给导航栏罩上一层透明的视图，此时导航栏的画面就完全显示；然后随着导航栏的移动距离，计算当前位置下的遮罩透明度，比如该遮罩变得越来越不透明，看起来导航栏就像蒙上了一层面纱，蒙到最后就看不见了。反过来，也可以一开始给导航栏罩上一层不透明的视图，此时导航栏的控件是看不见的，然后随着距离的变化，遮罩变得越来越不透明，导航栏也会跟着变得越来越清晰了。<br>
+
+只需给AppBarLayout对象调用addOnOffsetChangedListener方法，即可实现给导航栏注册偏移监听器的功能。<br>
+```java
+//AppBarLayout的监听方法
+    @Override
+    public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+        Log.d("aaa", "verticalOffset=" + verticalOffset);
+        //720*1080手机 verticalOffset取值范围[0-200]px
+        int absVerticalOffset = Math.abs(verticalOffset);//AppBarLayout竖直方向偏移距离px
+        int totalScrollRange = appBarLayout.getTotalScrollRange();//AppBarLayout总的距离px
+        //背景颜色转化成RGB的渐变色
+        int argb = Color.argb(absVerticalOffset, Color.red(mMaskColor), Color.green(mMaskColor), Color.blue(mMaskColor));
+        int argbDouble = Color.argb(absVerticalOffset * 2, Color.red(mMaskColor), Color.green(mMaskColor), Color.blue(mMaskColor));
+        //appBarLayout上滑一半距离后小图标应该由渐变到全透明
+        int title_small_offset = (200 - absVerticalOffset) < 0 ? 0 : 200 - absVerticalOffset;
+        int title_small_argb = Color.argb(title_small_offset * 2, Color.red(mMaskColor),
+                Color.green(mMaskColor), Color.blue(mMaskColor));
+        //appBarLayout上滑不到一半距离
+        if (absVerticalOffset <= totalScrollRange / 2) {
+            include_toolbar_search.setVisibility(View.VISIBLE);
+            include_toolbar_small.setVisibility(View.GONE);
+            //为了和下面的大图标渐变区分,乘以2倍渐变
+            v_toolbar_search_mask.setBackgroundColor(argbDouble);
+        } else {
+            include_toolbar_search.setVisibility(View.GONE);
+            include_toolbar_small.setVisibility(View.VISIBLE);
+        //appBarLayout上滑一半距离后小图标应该由渐变到全透明
+            v_toolbar_small_mask.setBackgroundColor(title_small_argb);
+
+        }
+        //上滑时遮罩由全透明到半透明
+        v_title_big_mask.setBackgroundColor(argb);
+    }
+    ```
+
