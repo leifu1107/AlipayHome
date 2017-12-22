@@ -90,7 +90,7 @@
 
 </android.support.design.widget.CoordinatorLayout>
 ```
-* ##`注意`
+* ## `注意`
 1.使用之前要在 /app/build.gradle中添加
  ```java
   	dependencies {
@@ -98,4 +98,12 @@
             compile 'com.gyf.barlibrary:barlibrary:2.3.0'
 	}
 ```
-design为材料设计仓库,barlibrary为第三方沉浸式状态栏的实现
+design为材料设计仓库,barlibrary为第三方沉浸式状态栏的实现<br>
+2.CollapsingToolbarLayout中需要添加app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+3.include_title_big(扫一扫 付一付 聊一聊 咻一咻 的大图标)的布局需要 
+```java
+		android:layout_marginTop="50dp"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.7" 
+		```
+	
