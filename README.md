@@ -103,7 +103,6 @@ design为材料设计仓库,barlibrary为第三方沉浸式状态栏的实现<br
 2.CollapsingToolbarLayout中需要添加
 ```java
 		app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
-		
 ```
 
 3.include_title_big(扫一扫 付一付 聊一聊 咻一咻 的大图标)的布局需要 
@@ -111,7 +110,6 @@ design为材料设计仓库,barlibrary为第三方沉浸式状态栏的实现<br
 		android:layout_marginTop="50dp"
                 app:layout_collapseMode="parallax"
                 app:layout_collapseParallaxMultiplier="0.7" 
-		
 ```
 layout_marginTop预留出toolbar的高度,否则布局重叠<br>
 
@@ -121,7 +119,11 @@ layout_marginTop预留出toolbar的高度,否则布局重叠<br>
                 app:contentInsetLeft="0dp"
                 app:contentInsetStart="0dp"
                 app:layout_collapseMode="pin"
-		
 ```
-高度为50dp,app:layout_collapseMode="pin"为固定模式
+高度为50dp,app:layout_collapseMode="pin"为固定模式<br>
+Toolbar里面放两个布局(一个搜索的布局,一个扫一扫 付一付 聊一聊 咻一咻 的小图标布局),通过监听AppBarLayout的移动控制显示还是隐藏<br>
+5.最下面防止滚动的控件,可以是RecyclerView，也可以是NestedScrollView,一定要在布局中设置
+```java
+app:layout_behavior="@string/appbar_scrolling_view_behavior"
+```
 	
