@@ -90,3 +90,12 @@
 
 </android.support.design.widget.CoordinatorLayout>
 ```
+* ##`注意`
+1.使用之前要在 /app/build.gradle中添加
+ ```java
+  	dependencies {
+	        compile 'com.android.support:design:26.0.0-alpha1'
+            compile 'com.gyf.barlibrary:barlibrary:2.3.0'
+	}
+```
+design为材料设计仓库,barlibrary为第三方沉浸式状态栏的实现
