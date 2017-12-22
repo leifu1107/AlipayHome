@@ -163,4 +163,10 @@ app:layout_behavior="@string/appbar_scrolling_view_behavior"
         }
         //上滑时遮罩由全透明到半透明
         v_title_big_mask.setBackgroundColor(argb);
-    }
+    }
+```
+## APK文件
+
+扫描二维码 或者 点击二维码 下载
+
+[![AlipayHome](https://github.com/leifu1107/AlipayHome/raw/master/screenshots/1.gif)](https://github.com/leifu1107/AlipayHome/raw/master/screenshots/app-debug.apk)
