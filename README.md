@@ -99,11 +99,29 @@
 	}
 ```
 design为材料设计仓库,barlibrary为第三方沉浸式状态栏的实现<br>
-2.CollapsingToolbarLayout中需要添加app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+
+2.CollapsingToolbarLayout中需要添加
+```java
+		app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+		
+```
+
 3.include_title_big(扫一扫 付一付 聊一聊 咻一咻 的大图标)的布局需要 
 ```java
 		android:layout_marginTop="50dp"
                 app:layout_collapseMode="parallax"
                 app:layout_collapseParallaxMultiplier="0.7" 
-		```
+		
+```
+layout_marginTop预留出toolbar的高度,否则布局重叠<br>
+
+4.Toolbar
+```java
+		android:layout_height="50dp"
+                app:contentInsetLeft="0dp"
+                app:contentInsetStart="0dp"
+                app:layout_collapseMode="pin"
+		
+```
+高度为50dp,app:layout_collapseMode="pin"为固定模式
 	
