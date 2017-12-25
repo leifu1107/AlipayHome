@@ -1,7 +1,7 @@
 # AlipayHome
 高仿支付宝首页的头部伸缩动画(使用design实现效果,CoordinatorLayout+AppBarLayout+CollapsingToolbarLayout+Toolbar)
 
-### 效果图(效果图渐变不明显,建议下载demo查看)
+### 效果图(效果图渐变不明显,建议下载demo或者apk查看)
 ![](https://github.com/leifu1107/AlipayHome/raw/master/screenshots/1.gif) 
 ### 实现原理(一个CoordinatorLayout嵌套AppBarLayout再嵌套CollapsingToolbarLayout再嵌套Toolbar的布局)
 1、CoordinatorLayout嵌套AppBarLayout，这是为了让头部导航栏能够跟随内容视图下拉而展开，跟随内容视图上拉而收缩。这个内容视图可以是RecyclerView，也可以是NestedScrollView；<br>
